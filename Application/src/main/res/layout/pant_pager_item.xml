@@ -11,8 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/_20dp"
         android:layout_marginBottom="@dimen/_10dp"
+        android:layout_marginRight="@dimen/_20dp"
         android:layout_marginTop="@dimen/_6dp"
         android:background="@drawable/ic_add_circle_outline_black_24px"
         android:padding="@dimen/_20dp" />
@@ -22,6 +22,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/add_button"
-        android:background="@drawable/default_pant_image" />
+        android:src="@drawable/default_pant_image" />
 
 </RelativeLayout>
