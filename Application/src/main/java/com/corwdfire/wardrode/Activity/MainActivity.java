@@ -81,9 +81,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         long pantId = mPantsList.get(mPantsViewPager.getCurrentItem()).getId();
         long shirtId = mShirtsList.get(mShirtsViewPager.getCurrentItem()).getId();
         if (isFavorite(pantId, shirtId)) {
-            mFavoriteButton.setBackground(ContextCompat.getDrawable(this, R.drawable.ic_favorite_black));
+            mFavoriteButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_favorite_black));
         } else {
-            mFavoriteButton.setBackground(ContextCompat.getDrawable(this, R.drawable.ic_favorite_border_black));
+            mFavoriteButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_favorite_border_black));
         }
         mPantsViewPager.setCurrentItem(getIntent().getIntExtra(getString(R.string.pant_random_num), 0));
         mShirtsViewPager.setCurrentItem(getIntent().getIntExtra(getString(R.string.shirt_random_num), 0));
@@ -178,14 +178,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     if (mFavoriteList.contains(favoriteItem)) {
                         mFavoriteList.remove(favoriteItem);
                         mDatabaseHandler.removeFavorite(shirtItem.getId(), pantItem.getId());
-                        mFavoriteButton.setBackground(ContextCompat.getDrawable(this, R.drawable.ic_favorite_border_black));
+                        mFavoriteButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_favorite_border_black));
                         Toast.makeText(this, getString(R.string.removed_from_favorite), Toast.LENGTH_SHORT).show();
                     } else {
                         mFavoriteList.add(favoriteItem);
                         ContentValues contentValues = new ContentValues();
                         contentValues.put(DatabaseHandler.FAVORITE_PANT_ID, pantItem.getId());
                         contentValues.put(DatabaseHandler.FAVORITE_SHIRT_ID, shirtItem.getId());
-                        mFavoriteButton.setBackground(ContextCompat.getDrawable(this, R.drawable.ic_favorite_black));
+                        mFavoriteButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_favorite_black));
                         Toast.makeText(this, getString(R.string.added_two_wish_lsit), Toast.LENGTH_SHORT).show();
                         mDatabaseHandler.addFavorites(contentValues);
                     }
@@ -212,9 +212,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ImageItem shirtImageItem = mShirtsList.get(mShirtsViewPager.getCurrentItem());
             ImageItem pantImageItem = mPantsList.get(mPantsViewPager.getCurrentItem());
             if (isFavorite(pantImageItem.getId(), shirtImageItem.getId())) {
-                mFavoriteButton.setBackground(ContextCompat.getDrawable(this, R.drawable.ic_favorite_black));
+                mFavoriteButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_favorite_black));
             } else {
-                mFavoriteButton.setBackground(ContextCompat.getDrawable(this, R.drawable.ic_favorite_border_black));
+                mFavoriteButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_favorite_border_black));
             }
         }
     }
@@ -248,9 +248,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         long pantId = mPantsList.get(mPantsViewPager.getCurrentItem()).getId();
         long shirtId = mShirtsList.get(mShirtsViewPager.getCurrentItem()).getId();
         if (isFavorite(pantId, shirtId)) {
-            mFavoriteButton.setBackground(ContextCompat.getDrawable(this, R.drawable.ic_favorite_black));
+            mFavoriteButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_favorite_black));
         } else {
-            mFavoriteButton.setBackground(ContextCompat.getDrawable(this, R.drawable.ic_favorite_border_black));
+            mFavoriteButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_favorite_border_black));
         }
 
     }

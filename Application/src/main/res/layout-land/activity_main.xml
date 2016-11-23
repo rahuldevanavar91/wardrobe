@@ -35,9 +35,9 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:layout_below="@id/tool_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tool_bar"
         android:layout_centerInParent="true"
         android:layout_centerVertical="true">
 
@@ -52,9 +52,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_centerInParent="true"
-            android:background="@color/white"
-            android:padding="@dimen/_10dp"
-            android:src="@drawable/ic_autorenew_black_36px" />
+            android:background="@drawable/circle"
+            android:padding="@dimen/_10dp" />
 
         <ImageView
             android:id="@+id/favorite_button"
@@ -62,7 +61,7 @@
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/_20dp"
-            android:background="@drawable/ic_favorite_border_black"
+            android:background="@drawable/circle"
             android:padding="@dimen/_10dp" />
 
     </RelativeLayout>
