@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Wardrobe</string>
+    <string name="done">Done</string>
+    <string name="selected_image">selected_image</string>
+    <string name="position">position</string>
+    <string name="take_a_photo">Take a photo</string>
+    <string name="type">type</string>
+    <string name="saved_list">saved_list</string>
+    <string name="saved_shirt_list">saved_shirt_lsit</string>
+    <string name="saved_pant_list">saved_pant_list</string>
+    <string name="added_two_wish_lsit">Added to favorite</string>
+    <string name="removed_from_favorite">Removed from favorite</string>
+    <string name="please_add_shirt">Please add shirt to make this favorite</string>
+    <string name="please_add_pant">Please add pant to make this favorite</string>
+    <string name="favorite_list">favorite_list</string>
+    <string name="shirt_random_num">shirt_random_num</string>
+    <string name="pant_random_num">pant_randm_num</string>
+
 </resources>
