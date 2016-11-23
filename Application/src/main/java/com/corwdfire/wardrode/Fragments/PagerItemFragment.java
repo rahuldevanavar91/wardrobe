@@ -18,7 +18,6 @@ import com.corwdfire.wardrode.Model.ImageItem;
  */
 
 public class PagerItemFragment extends Fragment {
-    public static final int SHIRT_ADD_PHOTO_REQUEST = 100;
     private ImageView mImage;
     private int mPostion;
     private int mTYpe;

@@ -10,7 +10,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -37,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private ViewPager mPantsViewPager;
     private ViewPager mShirtsViewPager;
+
     private ArrayList<ImageItem> mShirtsList;
     private ArrayList<ImageItem> mPantsList;
     private ArrayList<FavoriteItem> mFavoriteList;
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             setList();
             setAdapter();
-            setNotification();
+            scheduleNotification();
         }
     }
 
@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mPantsList = mDatabaseHandler.getCloths(PANT_TYPE);
         mShirtsList = mDatabaseHandler.getCloths(SHIRT_TYPE);
         mFavoriteList = mDatabaseHandler.getFavorites();
-        mShirtsList.add(addDummyPhoto(SHIRT_TYPE, mShirtsList.size()));
-        mPantsList.add(addDummyPhoto(PANT_TYPE, mPantsList.size()));
+        mShirtsList.add(addDummyImage(SHIRT_TYPE, mShirtsList.size()));
+        mPantsList.add(addDummyImage(PANT_TYPE, mPantsList.size()));
     }
 
     private void setAdapter() {
@@ -119,35 +119,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mShirtsViewPager.addOnPageChangeListener(this);
     }
 
-    private ImageItem addDummyPhoto(int shirtType, int position) {
+    private ImageItem addDummyImage(int shirtType, int position) {
         ImageItem imageItem = new ImageItem();
         imageItem.setType(shirtType);
         imageItem.setPosition(position);
         return imageItem;
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK && data != null) {
-            ImageItem imageItem = data.getParcelableExtra(getString(R.string.selected_image));
-            imageItem.setType(requestCode);
-            if (requestCode == SHIRT_TYPE) {
-                long id = addPhotoToDb(imageItem);
-                imageItem.setId(id);
-                mShirtsList.add(mPhotoRequestPosition, imageItem);
-                mShirtPageAdapter.updateList(mShirtsList);
 
-            } else if (requestCode == PANT_TYPE) {
-                long id = addPhotoToDb(imageItem);
-                imageItem.setId(id);
-                mPantsList.add(mPhotoRequestPosition, imageItem);
-                mPantPagerAdapter.updateList(mPantsList);
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    private long addPhotoToDb(ImageItem imageItem) {
+    private long addImageToDb(ImageItem imageItem) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(DatabaseHandler.IMAGE_URL, imageItem.getImageUrl());
         contentValues.put(DatabaseHandler.CLOTH_TYPE, imageItem.getType());
@@ -219,7 +199,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void setNotification() {
+    private void scheduleNotification() {
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         Intent alarmIntent = new Intent(this, NotificationReceiver.class);
         alarmIntent.putExtra(getString(R.string.shirt_random_num), new Random().nextInt(mShirtsList.size()));
@@ -241,6 +221,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void shuffleList() {
+     //Todo add algorithm to shuffle
+
         Collections.shuffle(mPantsList);
         Collections.shuffle(mShirtsList);
         mPantPagerAdapter.updateList(mPantsList);
@@ -271,6 +253,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         outState.putParcelableArrayList(getString(R.string.saved_shirt_list), mShirtsList);
         outState.putParcelableArrayList(getString(R.string.saved_pant_list), mPantsList);
         outState.putParcelableArrayList(getString(R.string.favorite_list), mFavoriteList);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK && data != null) {
+            ImageItem imageItem = data.getParcelableExtra(getString(R.string.selected_image));
+            imageItem.setType(requestCode);
+            if (requestCode == SHIRT_TYPE) {
+                long id = addImageToDb(imageItem);
+                imageItem.setId(id);
+                mShirtsList.add(mPhotoRequestPosition, imageItem);
+                mShirtPageAdapter.updateList(mShirtsList);
+
+            } else if (requestCode == PANT_TYPE) {
+                long id = addImageToDb(imageItem);
+                imageItem.setId(id);
+                mPantsList.add(mPhotoRequestPosition, imageItem);
+                mPantPagerAdapter.updateList(mPantsList);
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
 }

@@ -206,7 +206,6 @@ public class GalleryActivity extends AppCompatActivity implements GalleryGridAda
                         intent.putExtra(getString(R.string.selected_image), imageItem);
                         setResult(RESULT_OK, intent);
                         finish();
-                        // new CursorLoaderAsyncTask().execute();
                     }
                 });
     }
@@ -295,7 +294,7 @@ public class GalleryActivity extends AppCompatActivity implements GalleryGridAda
 
     @Override
     public void onBackPressed() {
-        finish();
+        super.onBackPressed();
     }
 
 }

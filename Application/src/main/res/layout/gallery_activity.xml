@@ -10,6 +10,7 @@
         android:layout_width="fill_parent"
         android:layout_height="?android:actionBarSize"
         android:elevation="@dimen/_5dp"
+        android:background="@color/colorPrimary"
         android:fitsSystemWindows="true"
         app:contentInsetStart="0.0dip"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">

@@ -13,7 +13,7 @@
         android:layout_marginLeft="@dimen/_20dp"
         android:layout_marginRight="@dimen/_10dp"
         android:layout_marginTop="@dimen/_20dp"
-        android:background="@drawable/ic_add_circle_outline_black_24px"
+        android:background="@drawable/ic_add_circle_outline_black"
         android:padding="@dimen/_20dp" />
 
     <ImageView

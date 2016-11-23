@@ -11,6 +11,7 @@
         android:layout_height="?android:actionBarSize"
         android:elevation="@dimen/_5dp"
         android:fitsSystemWindows="true"
+        android:background="@color/colorPrimary"
         app:contentInsetStart="0.0dip"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
@@ -59,7 +60,7 @@
                 android:layout_centerInParent="true"
                 android:background="@drawable/circle"
                 android:padding="@dimen/_10dp"
-                android:src="@drawable/ic_autorenew_black_36px" />
+                android:src="@drawable/ic_sync" />
 
             <ImageView
                 android:id="@+id/favorite_button"

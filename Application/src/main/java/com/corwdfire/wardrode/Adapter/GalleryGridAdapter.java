@@ -109,7 +109,7 @@ public class GalleryGridAdapter extends BaseAdapter {
 
     private void updateHeaderView(ViewHolder viewHolder, int position) {
         viewHolder.imageView.setImageBitmap(null);
-        viewHolder.imageView.setBackground(ContextCompat.getDrawable(mContext, R.drawable.ic_camera_enhance_black));
+        viewHolder.imageView.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_camera));
         viewHolder.checkBox.setVisibility(View.GONE);
         viewHolder.itemView.setTag(position);
         viewHolder.takePhoto.setVisibility(View.VISIBLE);
